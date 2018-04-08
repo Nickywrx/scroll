@@ -77,7 +77,7 @@
 <body>
   <div id="box">
     <div>
-      <p>该死的支付宝555</p>
+      <p>该死的支付宝666</p>
     </div>
     <div class="secBox">
   <div class="fixedBox" ref="fixedBox" @click.stop.prevent="onShortcutTouchStart">
@@ -257,8 +257,9 @@
         alert('created')
       },
       mounted:function(){
-        setTimeout(() => {
-        this.initScroll()
+        var _this = this;
+        setTimeout(function(){
+        _this.initScroll()
 
       }, 20)
       },
