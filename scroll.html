@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+          padding: 0;
+          margin: 0;
+        }
+        body,html{
+          width: 100%;
+          height: 100%;
+        }
+        #box{
+           width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+        .wrapper{
+          height: 100%;
+          overflow: hidden;
+          background: lightblue;
+        }
+        .content{
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+        .content>li{
+          list-style: none;
+          height: 900px;
+          display: none;
+          border-bottom: 1px solid #000;
+        }
+        .content li.active{
+          display: block;
+        }
+        .content li h1{
+          background: #000;
+          color: #fff;
+        }
+        .fixedBox{
+          float: left;
+          width: 80px;
+          height: 100%;
+          background: rgba(0,0,0,.6);
+          z-index: 999;
+        }
+        .fixedBox li {
+          height: 80px;
+          line-height: 80px;
+          border-bottom: 1px solid #000;
+          border-right: 1px solid #ccc;
+          list-style: none;
+          text-align: center;
+          color: #fff;
+        }
+        .fixedBox li:last-child{
+          border-bottom: none;
+        }
+        .fixedBox li.active{
+          background: #daa520;
+          color: #fff;
+        }
+        
+    </style>
+</head>
+<body>
+  <div id="box">
+  <div class="fixedBox" ref="fixedBox" @click.stop="onShortcutTouchStart">
+    <div>
+        <ul class="fixedBoxUl" ref="fixedBoxUl" >
+          <li data-index="0" class="active">iphone</li>
+          <li data-index="1">小米</li>
+          <li data-index="2">华为</li>
+          <li data-index="3">OPPO</li>
+          <li data-index="4">诺基亚</li>
+          <li data-index="5">联想</li>
+          <li data-index="6">魅族</li>
+          <li data-index="7">vivo</li>
+          <li data-index="8">三星</li>
+          <li data-index="9">中兴</li>
+          <li data-index="10">Moto</li>
+          <li data-index="11">努比亚</li>
+          <li data-index="12">蓝莓</li>
+          <li data-index="13">一加</li>
+          <li data-index="14">360</li>
+          <li data-index="15">8848</li>
+          <li data-index="16">海信</li>
+        </ul>
+        </div>
+      </div>
+    <div class="wrapper" ref="wrapper">
+      <div>
+      <ul class="content" ref="content">
+        <li class="active">
+          <h1>iphone</h1>
+          <ul>
+            <li>iphone</li>
+          </ul>
+        </li>
+        <li>
+          <h1>小米</h1>
+          <ul>
+            <li>小米</li>
+          </ul>
+        </li>
+        <li>
+          <h1>华为</h1>
+          <ul>
+            <li>华为</li>
+          </ul>
+        </li>
+        <li>
+          <h1>OPPO</h1>
+          <ul>
+            <li>OPPO</li>
+          </ul>
+        </li>
+        <li>
+          <h1>诺基亚</h1>
+          <ul>
+            <li>诺基亚</li>
+          </ul>
+        </li>
+         <li>
+          <h1>联想</h1>
+          <ul>
+            <li>联想</li>
+          </ul>
+        </li>
+        <li>
+          <h1>魅族</h1>
+          <ul>
+            <li>魅族</li>
+          </ul>
+        </li>
+        <li>
+          <h1>vivo</h1>
+          <ul>
+            <li>vivo</li>
+          </ul>
+        </li>
+         <li>
+          <h1>三星</h1>
+          <ul>
+            <li>三星</li>
+          </ul>
+        </li>
+         <li>
+          <h1>中兴</h1>
+          <ul>
+            <li>中兴</li>
+          </ul>
+        </li>
+         <li>
+          <h1>Moto</h1>
+          <ul>
+            <li>Moto</li>
+          </ul>
+        </li>
+         <li>
+          <h1>努比亚</h1>
+          <ul>
+            <li>努比亚</li>
+          </ul>
+        </li>
+        <li>
+          <h1>蓝莓</h1>
+          <ul>
+            <li>蓝莓</li>
+          </ul>
+        </li>
+        <li>
+          <h1>一加</h1>
+          <ul>
+            <li>一加</li>
+          </ul>
+        </li>
+        <li>
+          <h1>360</h1>
+          <ul>
+            <li>360</li>
+          </ul>
+        </li>
+        <li>
+          <h1>8848</h1>
+          <ul>
+            <li>8848</li>
+          </ul>
+        </li>
+                <li>
+          <h1>海信</h1>
+          <ul>
+            <li>海信</li>
+          </ul>
+        </li>
+      </ul>
+      </div>
+    </div>
+</div>
+<script type="text/javascript" src="vue.min.js"></script>
+<script type="text/javascript" src="bscroll.min.js"></script>
+<script type="text/javascript">
+    /*var wrapper = document.querySelector('.wrapper')
+    var scroll = new BScroll(wrapper)
+    $('.one').click(function(){
+      scroll.scrollTo(0,-200,0)
+    })
+    $('.two').click(function(){
+     _scrollTo('.nine')
+    })
+    $('.three').click(function(){
+      scroll.scrollTo(0,-600,0)
+    })
+    $('.forth').click(function(){
+      _scrollTo('.th')
+    })
+    // $('.wrapper')[0].addEventListener('touchstart',function(e){
+    //   console.log(e.touches[0].pageY)
+    // })
+    scroll.scrollToElement = function(){
+       scroll && scroll.scrollToElement.apply(scroll, arguments)
+    }
+     
+    function _scrollTo(index){
+      scroll.scrollToElement(index,0)
+    }*/
+    var ANCHOR_HEIGHT = document.querySelector('.fixedBox').children[0].clientHeight
+    new Vue({
+      el: '#box',
+      data:{
+
+      },
+      created:function(){
+        this.touch = {}
+      },
+      mounted:function(){
+        setTimeout(() => {
+        this.initScroll()
+
+      }, 20)
+      },
+      methods:{
+        initScroll:function(){
+          this.scroll = new BScroll(this.$refs.wrapper,{
+            probeType: 3,
+            click: true
+          });
+          this.scroll2 = new BScroll(this.$refs.fixedBox,{
+            probeType: 3,
+            click: true
+          })
+        },
+        touchstartclick:function(e){
+          this._scrollTo('.one')
+        },
+        touchstartclick2:function(e){
+          this._scrollTo('.fifth')
+        },
+        onShortcutTouchStart:function(e){
+          var anchorIndex = e.target.getAttribute('data-index');
+          this._scrollTo(anchorIndex)
+          console.log(anchorIndex)
+        },
+        onShortcutTouchMove:function(e){
+          var firstTouch = e.touches[0];
+          this.touch.y2 = firstTouch.pageY;
+          var delta = (this.touch.y2 - this.touch.y1) / ANCHOR_HEIGHT | 0
+          var anchorIndex = parseInt(this.touch.anchorIndex) + delta
+          this._scrollTo(anchorIndex)
+        },
+        _scrollTo:function(index){
+          this.scroll2.scrollToElement(this.$refs.fixedBoxUl.children[index],0)
+          this.scroll.scrollToElement(this.$refs.content.children[index],0)
+          for(var i = 0; i < this.$refs.fixedBoxUl.children.length; i++){
+            this.$refs.fixedBoxUl.children[i].className = '';
+            this.$refs.fixedBoxUl.children[index].className = 'active'
+          }
+
+          for(var i = 0; i < this.$refs.content.children.length; i++){
+            this.$refs.content.children[i].className = '';
+            this.$refs.content.children[index].className = 'active'
+          }
+        }
+       
+      }
+    })
+</script>
